@@ -1,6 +1,49 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let pageTitle = "أفضل مركز تنجيد سيارات في الرياض | الإمبراطور";
+            let pageDesc = "نقدم خدمات تنجيد وإصلاح السيارات بأعلى جودة وضمان في الرياض.";
+            let h1Text = "مرحباً بك في مركز الإمبراطور لتنجيد السيارات";
+            let contentText = "اختر الخدمة والحي المناسب لك من خريطتنا الشاملة للحصول على أفضل سعر وأعلى جودة.";
+
+            if (urlParams.has('q') && urlParams.has('loc')) {
+                let q = urlParams.get('q').replace(/-/g, ' ');
+                let loc = urlParams.get('loc').replace(/-/g, ' ');
+                pageTitle = `${q} في حي ${loc} | مركز الإمبراطور`;
+                pageDesc = `تبحث عن ${q} في حي ${loc} بالرياض؟ نحن نقدم لك أفضل خدمة بضمان وجودة عالية وتنفيذ فوري.`;
+                h1Text = `${q} في حي ${loc}`;
+                contentText = `نحن متواجدون بالقرب منك في حي ${loc} لتقديم أفضل خدمة مخصصة في "${q}" لسيارتك بأيدي أمهر الفنيين.`;
+            } else if (urlParams.has('keyword') && urlParams.has('vs')) {
+                let keyword = urlParams.get('keyword').replace(/-/g, ' ');
+                let vs = urlParams.get('vs').replace(/-/g, ' ');
+                pageTitle = `${keyword} - الخيار الأذكى بدلاً من ${vs}`;
+                pageDesc = `اكتشف لماذا يعتبر مركز الإمبراطور الخيار الأول في ${keyword} مقارنة بـ ${vs} في الرياض.`;
+                h1Text = `تبحث عن ${keyword}؟ نحن نتفوق على ${vs}`;
+                contentText = `نوفر لك جودة أعلى، أسعار تنافسية، وضمان حقيقي يجعلك تختارنا دائماً في كل ما يخص ${keyword} كبديل أفضل من ${vs}.`;
+            } else if (urlParams.has('car') && urlParams.has('service')) {
+                let car = urlParams.get('car').replace(/-/g, ' ');
+                let service = urlParams.get('service').replace(/-/g, ' ');
+                pageTitle = `${service} لسيارة ${car} في الرياض`;
+                pageDesc = `خبراء متخصصون في ${service} لسيارات ${car} بأسعار تنافسية واحترافية عالية مع خامات أصلية.`;
+                h1Text = `متخصصون في ${service} لسيارة ${car}`;
+                contentText = `سيارتك الفخمة من نوع ${car} في أيدٍ أمينة. نحن نقدم لك خدمات ${service} بشد وكالة وعناية فائقة.`;
+            }
+
+            document.title = pageTitle;
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if(metaDesc) metaDesc.setAttribute("content", pageDesc);
+            
+            let h1Elem = document.getElementById('dynamic-h1');
+            if(h1Elem) h1Elem.innerText = h1Text;
+            
+            let pElem = document.getElementById('dynamic-content');
+            if(pElem) pElem.innerText = contentText;
+        });
+    </script>
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
